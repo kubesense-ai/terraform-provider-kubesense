@@ -1,0 +1,49 @@
+{
+  "config": {
+    "alignColumns": [],
+    "colorScheme": {
+      "palette": "default",
+      "type": "palette"
+    },
+    "columnFormatting": [],
+    "fillOpacity": 0,
+    "legendPlacement": "bottom",
+    "legendVisibility": true,
+    "lineWidth": 1.5,
+    "mergeTables": true,
+    "percentageChangeColorMode": "standard",
+    "showLabel": false,
+    "showPercentageChange": false,
+    "showTrend": false,
+    "stackSeries": false,
+    "step": "auto",
+    "tableSettings": {
+      "columnPinning": {},
+      "columnVisibility": {},
+      "columnWidths": {},
+      "sorting": []
+    },
+    "thresholdDisplayMode": "off",
+    "thresholds": [
+      {
+        "color": "#56a64b",
+        "isDefault": true,
+        "isLabelShown": false,
+        "label": "",
+        "threshold": "-Infinity"
+      }
+    ],
+    "tooltipMode": "single",
+    "topListDisplayMode": "flat",
+    "valueOptions": {
+      "show": "calculate"
+    },
+    "visualFormattingRules": [],
+    "yAxisDecimals": null,
+    "yAxisIncludeZero": false,
+    "yAxisLabelFormatter": "auto",
+    "yAxisMax": null,
+    "yAxisMin": null
+  },
+  "panelType": "timeSeries"
+}

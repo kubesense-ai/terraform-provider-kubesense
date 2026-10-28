@@ -1,0 +1,17 @@
+{
+  "condition_type": "threshold",
+  "enabled": true,
+  "evaluation_interval": "1m",
+  "frequency_type": "at_least_once",
+  "include_samples": false,
+  "labels": {},
+  "no_data_state": "normal",
+  "notification_channel_ids": [],
+  "raw_query": "",
+  "route_by_labels": false,
+  "sample_limit": 5,
+  "schema_version": 1,
+  "severity": "warning",
+  "time_window": "5m",
+  "unit": "auto"
+}

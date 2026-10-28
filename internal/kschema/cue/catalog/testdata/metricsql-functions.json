@@ -1,0 +1,1626 @@
+[
+ {
+  "cat": "rollup",
+  "name": "absent_over_time",
+  "sig": "absent_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "aggr_over_time",
+  "sig": "aggr_over_time((\"rollup_func1\", \"rollup_func2\", ...), series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "ascent_over_time",
+  "sig": "ascent_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "avg_over_time",
+  "sig": "avg_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "changes",
+  "sig": "changes(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "changes_prometheus",
+  "sig": "changes_prometheus(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "count_eq_over_time",
+  "sig": "count_eq_over_time(series_selector[d], eq)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "count_gt_over_time",
+  "sig": "count_gt_over_time(series_selector[d], gt)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "count_le_over_time",
+  "sig": "count_le_over_time(series_selector[d], le)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "count_ne_over_time",
+  "sig": "count_ne_over_time(series_selector[d], ne)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "count_over_time",
+  "sig": "count_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "count_values_over_time",
+  "sig": "count_values_over_time(\"label\", series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "decreases_over_time",
+  "sig": "decreases_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "default_rollup",
+  "sig": "default_rollup(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "delta",
+  "sig": "delta(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "delta_prometheus",
+  "sig": "delta_prometheus(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "deriv",
+  "sig": "deriv(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "deriv_fast",
+  "sig": "deriv_fast(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "descent_over_time",
+  "sig": "descent_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "distinct_over_time",
+  "sig": "distinct_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "duration_over_time",
+  "sig": "duration_over_time(series_selector[d], max_interval)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "first_over_time",
+  "sig": "first_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "geomean_over_time",
+  "sig": "geomean_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "histogram_over_time",
+  "sig": "histogram_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "hoeffding_bound_lower",
+  "sig": "hoeffding_bound_lower(phi, series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "hoeffding_bound_upper",
+  "sig": "hoeffding_bound_upper(phi, series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "holt_winters",
+  "sig": "holt_winters(series_selector[d], sf, tf)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "idelta",
+  "sig": "idelta(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "ideriv",
+  "sig": "ideriv(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "increase",
+  "sig": "increase(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "increase_prometheus",
+  "sig": "increase_prometheus(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "increase_pure",
+  "sig": "increase_pure(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "increases_over_time",
+  "sig": "increases_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "integrate",
+  "sig": "integrate(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "irate",
+  "sig": "irate(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "lag",
+  "sig": "lag(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "last_over_time",
+  "sig": "last_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "lifetime",
+  "sig": "lifetime(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "mad_over_time",
+  "sig": "mad_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "max_over_time",
+  "sig": "max_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "median_over_time",
+  "sig": "median_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "min_over_time",
+  "sig": "min_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "mode_over_time",
+  "sig": "mode_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "outlier_iqr_over_time",
+  "sig": "outlier_iqr_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "predict_linear",
+  "sig": "predict_linear(series_selector[d], t)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "present_over_time",
+  "sig": "present_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "quantile_over_time",
+  "sig": "quantile_over_time(phi, series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "quantiles_over_time",
+  "sig": "quantiles_over_time(\"phiLabel\", phi1, ..., phiN, series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "range_over_time",
+  "sig": "range_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rate",
+  "sig": "rate(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rate_prometheus",
+  "sig": "rate_prometheus(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rate_over_sum",
+  "sig": "rate_over_sum(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "resets",
+  "sig": "resets(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rollup",
+  "sig": "rollup(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rollup_candlestick",
+  "sig": "rollup_candlestick(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rollup_delta",
+  "sig": "rollup_delta(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rollup_deriv",
+  "sig": "rollup_deriv(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rollup_increase",
+  "sig": "rollup_increase(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rollup_rate",
+  "sig": "rollup_rate(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "rollup_scrape_interval",
+  "sig": "rollup_scrape_interval(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "scrape_interval",
+  "sig": "scrape_interval(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "share_gt_over_time",
+  "sig": "share_gt_over_time(series_selector[d], gt)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "share_le_over_time",
+  "sig": "share_le_over_time(series_selector[d], le)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "share_eq_over_time",
+  "sig": "share_eq_over_time(series_selector[d], eq)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "stale_samples_over_time",
+  "sig": "stale_samples_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "stddev_over_time",
+  "sig": "stddev_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "stdvar_over_time",
+  "sig": "stdvar_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "sum_eq_over_time",
+  "sig": "sum_eq_over_time(series_selector[d], eq)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "sum_gt_over_time",
+  "sig": "sum_gt_over_time(series_selector[d], gt)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "sum_le_over_time",
+  "sig": "sum_le_over_time(series_selector[d], le)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "sum_over_time",
+  "sig": "sum_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "sum2_over_time",
+  "sig": "sum2_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "timestamp",
+  "sig": "timestamp(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "timestamp_with_name",
+  "sig": "timestamp_with_name(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "tfirst_over_time",
+  "sig": "tfirst_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "tlast_change_over_time",
+  "sig": "tlast_change_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "tlast_over_time",
+  "sig": "tlast_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "tmax_over_time",
+  "sig": "tmax_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "tmin_over_time",
+  "sig": "tmin_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "rollup",
+  "name": "zscore_over_time",
+  "sig": "zscore_over_time(series_selector[d])",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "abs",
+  "sig": "abs(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "absent",
+  "sig": "absent(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "acos",
+  "sig": "acos(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "acosh",
+  "sig": "acosh(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "asin",
+  "sig": "asin(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "asinh",
+  "sig": "asinh(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "atan",
+  "sig": "atan(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "atanh",
+  "sig": "atanh(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "bitmap_and",
+  "sig": "bitmap_and(q, mask)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "bitmap_or",
+  "sig": "bitmap_or(q, mask)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "bitmap_xor",
+  "sig": "bitmap_xor(q, mask)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "buckets_limit",
+  "sig": "buckets_limit(limit, buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "ceil",
+  "sig": "ceil(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "clamp",
+  "sig": "clamp(q, min, max)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "clamp_max",
+  "sig": "clamp_max(q, max)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "clamp_min",
+  "sig": "clamp_min(q, min)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "cos",
+  "sig": "cos(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "cosh",
+  "sig": "cosh(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "day_of_month",
+  "sig": "day_of_month(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "day_of_week",
+  "sig": "day_of_week(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "day_of_year",
+  "sig": "day_of_year(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "days_in_month",
+  "sig": "days_in_month(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "deg",
+  "sig": "deg(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "drop_empty_series",
+  "sig": "drop_empty_series(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "end",
+  "sig": "end()",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "exp",
+  "sig": "exp(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "floor",
+  "sig": "floor(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "histogram_avg",
+  "sig": "histogram_avg(buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "histogram_fraction",
+  "sig": "histogram_fraction(lowerLe, upperLe, buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "histogram_quantile",
+  "sig": "histogram_quantile(phi, buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "histogram_quantiles",
+  "sig": "histogram_quantiles(\"phiLabel\", phi1, ..., phiN, buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "histogram_share",
+  "sig": "histogram_share(le, buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "histogram_stddev",
+  "sig": "histogram_stddev(buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "histogram_stdvar",
+  "sig": "histogram_stdvar(buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "hour",
+  "sig": "hour(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "interpolate",
+  "sig": "interpolate(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "keep_last_value",
+  "sig": "keep_last_value(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "keep_next_value",
+  "sig": "keep_next_value(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "limit_offset",
+  "sig": "limit_offset(limit, offset, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "ln",
+  "sig": "ln(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "log2",
+  "sig": "log2(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "log10",
+  "sig": "log10(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "minute",
+  "sig": "minute(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "month",
+  "sig": "month(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "now",
+  "sig": "now()",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "pi",
+  "sig": "pi()",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "rad",
+  "sig": "rad(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "prometheus_buckets",
+  "sig": "prometheus_buckets(buckets)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "rand",
+  "sig": "rand(seed)",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "rand_exponential",
+  "sig": "rand_exponential(seed)",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "rand_normal",
+  "sig": "rand_normal(seed)",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "range_avg",
+  "sig": "range_avg(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_first",
+  "sig": "range_first(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_last",
+  "sig": "range_last(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_linear_regression",
+  "sig": "range_linear_regression(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_mad",
+  "sig": "range_mad(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_max",
+  "sig": "range_max(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_median",
+  "sig": "range_median(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_min",
+  "sig": "range_min(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_normalize",
+  "sig": "range_normalize(q1, ...)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_quantile",
+  "sig": "range_quantile(phi, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_stddev",
+  "sig": "range_stddev(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_stdvar",
+  "sig": "range_stdvar(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_sum",
+  "sig": "range_sum(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_trim_outliers",
+  "sig": "range_trim_outliers(k, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_trim_spikes",
+  "sig": "range_trim_spikes(phi, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_trim_zscore",
+  "sig": "range_trim_zscore(z, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "range_zscore",
+  "sig": "range_zscore(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "remove_resets",
+  "sig": "remove_resets(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "round",
+  "sig": "round(q, nearest)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "ru",
+  "sig": "ru(free, max)",
+  "in_scope": false,
+  "out_reason": "combines several series"
+ },
+ {
+  "cat": "transform",
+  "name": "running_avg",
+  "sig": "running_avg(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "running_max",
+  "sig": "running_max(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "running_min",
+  "sig": "running_min(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "running_sum",
+  "sig": "running_sum(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "scalar",
+  "sig": "scalar(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "sgn",
+  "sig": "sgn(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "sin",
+  "sig": "sin(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "sinh",
+  "sig": "sinh(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "tan",
+  "sig": "tan(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "tanh",
+  "sig": "tanh(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "smooth_exponential",
+  "sig": "smooth_exponential(q, sf)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "sort",
+  "sig": "sort(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "sort_desc",
+  "sig": "sort_desc(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "sqrt",
+  "sig": "sqrt(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "start",
+  "sig": "start()",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "step",
+  "sig": "step()",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "time",
+  "sig": "time()",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "timezone_offset",
+  "sig": "timezone_offset(tz)",
+  "in_scope": false,
+  "out_reason": "no series input"
+ },
+ {
+  "cat": "transform",
+  "name": "ttf",
+  "sig": "ttf(free)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "union",
+  "sig": "union(q1, ..., qN)",
+  "in_scope": false,
+  "out_reason": "combines several series"
+ },
+ {
+  "cat": "transform",
+  "name": "vector",
+  "sig": "vector(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "transform",
+  "name": "year",
+  "sig": "year(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "alias",
+  "sig": "alias(q, \"name\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "drop_common_labels",
+  "sig": "drop_common_labels(q1, ...., qN)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_copy",
+  "sig": "label_copy(q, \"src_label1\", \"dst_label1\", ..., \"src_labelN\", \"dst_labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_del",
+  "sig": "label_del(q, \"label1\", ..., \"labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_graphite_group",
+  "sig": "label_graphite_group(q, groupNum1, ... groupNumN)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_join",
+  "sig": "label_join(q, \"dst_label\", \"separator\", \"src_label1\", ..., \"src_labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_keep",
+  "sig": "label_keep(q, \"label1\", ..., \"labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_lowercase",
+  "sig": "label_lowercase(q, \"label1\", ..., \"labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_map",
+  "sig": "label_map(q, \"label\", \"src_value1\", \"dst_value1\", ..., \"src_valueN\", \"dst_valueN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_match",
+  "sig": "label_match(q, \"label\", \"regexp\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_mismatch",
+  "sig": "label_mismatch(q, \"label\", \"regexp\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_move",
+  "sig": "label_move(q, \"src_label1\", \"dst_label1\", ..., \"src_labelN\", \"dst_labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_replace",
+  "sig": "label_replace(q, \"dst_label\", \"replacement\", \"src_label\", \"regex\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_set",
+  "sig": "label_set(q, \"label1\", \"value1\", ..., \"labelN\", \"valueN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_transform",
+  "sig": "label_transform(q, \"label\", \"regexp\", \"replacement\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_uppercase",
+  "sig": "label_uppercase(q, \"label1\", ..., \"labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "label_value",
+  "sig": "label_value(q, \"label\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "labels_equal",
+  "sig": "labels_equal(q, \"label1\", \"label2\", ...)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "sort_by_label",
+  "sig": "sort_by_label(q, \"label1\", ... \"labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "sort_by_label_desc",
+  "sig": "sort_by_label_desc(q, \"label1\", ... \"labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "sort_by_label_numeric",
+  "sig": "sort_by_label_numeric(q, \"label1\", ... \"labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "label",
+  "name": "sort_by_label_numeric_desc",
+  "sig": "sort_by_label_numeric_desc(q, \"label1\", ... \"labelN\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "any",
+  "sig": "any(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "avg",
+  "sig": "avg(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "bottomk",
+  "sig": "bottomk(k, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "bottomk_avg",
+  "sig": "bottomk_avg(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "bottomk_last",
+  "sig": "bottomk_last(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "bottomk_max",
+  "sig": "bottomk_max(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "bottomk_median",
+  "sig": "bottomk_median(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "bottomk_min",
+  "sig": "bottomk_min(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "count",
+  "sig": "count(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "count_values",
+  "sig": "count_values(\"label\", q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "distinct",
+  "sig": "distinct(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "geomean",
+  "sig": "geomean(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "group",
+  "sig": "group(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "histogram",
+  "sig": "histogram(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "limitk",
+  "sig": "limitk(k, q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "mad",
+  "sig": "mad(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "max",
+  "sig": "max(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "median",
+  "sig": "median(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "min",
+  "sig": "min(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "mode",
+  "sig": "mode(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "outliers_iqr",
+  "sig": "outliers_iqr(q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "outliers_mad",
+  "sig": "outliers_mad(tolerance, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "outliersk",
+  "sig": "outliersk(k, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "quantile",
+  "sig": "quantile(phi, q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "quantiles",
+  "sig": "quantiles(\"phiLabel\", phi1, ..., phiN, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "share",
+  "sig": "share(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "stddev",
+  "sig": "stddev(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "stdvar",
+  "sig": "stdvar(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "sum",
+  "sig": "sum(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "sum2",
+  "sig": "sum2(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "topk",
+  "sig": "topk(k, q)",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "topk_avg",
+  "sig": "topk_avg(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "topk_last",
+  "sig": "topk_last(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "topk_max",
+  "sig": "topk_max(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "topk_median",
+  "sig": "topk_median(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "topk_min",
+  "sig": "topk_min(k, q, \"other_label=other_value\")",
+  "in_scope": true,
+  "out_reason": null
+ },
+ {
+  "cat": "aggregate",
+  "name": "zscore",
+  "sig": "zscore(q) by (group_labels)",
+  "in_scope": true,
+  "out_reason": null
+ }
+]

@@ -1,0 +1,38 @@
+# Tests for the public repository. This tree is generated from KubeSense's
+# monorepo, where the same tests run on every change; they run here too so the
+# exported module is proven to stand on its own.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+      - run: go vet ./...
+      # The previous release, for the upgrade test: state written by it must
+      # plan empty with this build. Empty until the first release exists, which
+      # skips that one test.
+      - name: Find the previous release
+        run: |
+          prev=$(git tag --list 'v*' --sort=-v:refname | head -1)
+          echo "KUBESENSE_PREVIOUS_PROVIDER_VERSION=${prev#v}" >> "$GITHUB_ENV"
+      - run: go test -p 1 ./...
+        env:
+          TF_ACC: "1"

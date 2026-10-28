@@ -1,0 +1,6 @@
+# Local builds and Terraform working files from trying the examples.
+/terraform-provider-kubesense
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*

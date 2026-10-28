@@ -1,0 +1,58 @@
+# Publishes a release on a v* tag. The Terraform Registry picks it up from the
+# GitHub release: per-platform zips, SHA256SUMS signed with the GPG key whose
+# public half is registered with the registry, and the manifest.
+#
+# Secrets: GPG_PRIVATE_KEY (armored, RSA — the registry does not accept ECC)
+# and PASSPHRASE.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+      # Upgrading from the release before this one must leave plans empty.
+      - name: Find the previous release
+        run: |
+          prev=$(git tag --list 'v*' --sort=-v:refname | grep -vx "$GITHUB_REF_NAME" | head -1)
+          echo "KUBESENSE_PREVIOUS_PROVIDER_VERSION=${prev#v}" >> "$GITHUB_ENV"
+      - run: go test -p 1 ./...
+        env:
+          TF_ACC: "1"
+
+  goreleaser:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: crazy-max/ghaction-import-gpg@v6
+        id: import_gpg
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+      - uses: goreleaser/goreleaser-action@v6
+        with:
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}

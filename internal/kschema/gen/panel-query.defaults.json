@@ -1,0 +1,254 @@
+{
+  "alert": {
+    "colorPreference": "text",
+    "displayFormat": "both",
+    "filters": {},
+    "label": "A",
+    "ruleId": "",
+    "ruleName": "",
+    "summaryType": "monitor",
+    "visible": true,
+    "vizType": "timeseries",
+    "widgetType": "graph"
+  },
+  "events": {
+    "aggregation": {
+      "function": "row_count"
+    },
+    "chart_type": "table",
+    "fieldConfig": {},
+    "filterMode": "MFD",
+    "filters": {},
+    "groupBy": [],
+    "label": "A",
+    "labelOptions": {
+      "type": "auto"
+    },
+    "list": [],
+    "pagination": {
+      "page": 1,
+      "page_size": 50
+    },
+    "query": "",
+    "queryMode": "builder",
+    "sorting": {
+      "sortBy": {
+        "field": "",
+        "is_attribute": false,
+        "type": "string"
+      },
+      "sortOrder": "ASC"
+    },
+    "source": "auto",
+    "value": "auto",
+    "variables": [],
+    "visible": true,
+    "xaxis": "auto",
+    "yaxis": [
+      "auto"
+    ]
+  },
+  "formula": {
+    "fieldConfig": {},
+    "label": "A",
+    "labelOptions": {
+      "type": "auto"
+    },
+    "visible": true
+  },
+  "infrastructure": {
+    "filterMode": "MFD",
+    "filters": {},
+    "groupByDimensions": [],
+    "label": "A",
+    "visible": true
+  },
+  "logs": {
+    "aggregation": {
+      "function": "row_count"
+    },
+    "chart_type": "table",
+    "fieldConfig": {},
+    "filterMode": "MFD",
+    "filters": {},
+    "groupBy": [],
+    "label": "A",
+    "labelOptions": {
+      "type": "auto"
+    },
+    "list": [],
+    "pagination": {
+      "page": 1,
+      "page_size": 50
+    },
+    "query": "",
+    "queryMode": "builder",
+    "sorting": {
+      "sortBy": {
+        "field": "",
+        "is_attribute": false,
+        "type": "string"
+      },
+      "sortOrder": "ASC"
+    },
+    "source": "auto",
+    "value": "auto",
+    "variables": [],
+    "visible": true,
+    "xaxis": "auto",
+    "yaxis": [
+      "auto"
+    ]
+  },
+  "metrics": {
+    "fieldConfig": {},
+    "filters": {},
+    "functions": [],
+    "label": "A",
+    "labelOptions": {
+      "type": "auto"
+    },
+    "pagination": {
+      "page": 1,
+      "page_size": 50
+    },
+    "promql": "",
+    "queryMode": "builder",
+    "selectedMetric": "aggregator_discovery_aggregation_count_total",
+    "variables": [],
+    "visible": true
+  },
+  "rum": {
+    "aggregation": {
+      "function": "row_count"
+    },
+    "chart_type": "table",
+    "fieldConfig": {},
+    "filterMode": "MFD",
+    "filters": {},
+    "groupBy": [],
+    "label": "A",
+    "labelOptions": {
+      "type": "auto"
+    },
+    "list": [],
+    "pagination": {
+      "page": 1,
+      "page_size": 50
+    },
+    "query": "",
+    "queryMode": "builder",
+    "sorting": {
+      "sortBy": {
+        "field": "",
+        "is_attribute": false,
+        "type": "string"
+      },
+      "sortOrder": "ASC"
+    },
+    "source": "auto",
+    "value": "auto",
+    "variables": [],
+    "visible": true,
+    "xaxis": "auto",
+    "yaxis": [
+      "auto"
+    ]
+  },
+  "slo": {
+    "filters": {},
+    "label": "A",
+    "objectiveId": "",
+    "objectiveName": "",
+    "showErrorBudget": true,
+    "sloTableView": "primary",
+    "sortBy": "",
+    "sortOrder": "",
+    "timeWindows": [
+      "last_24_hour",
+      "last_7_days",
+      "last_28_days"
+    ],
+    "viewMode": "overall",
+    "visible": true,
+    "widgetType": "single"
+  },
+  "synthetics": {
+    "aggregation": {
+      "function": "row_count"
+    },
+    "chart_type": "table",
+    "fieldConfig": {},
+    "filterMode": "MFD",
+    "filters": {},
+    "groupBy": [],
+    "label": "A",
+    "labelOptions": {
+      "type": "auto"
+    },
+    "list": [],
+    "pagination": {
+      "page": 1,
+      "page_size": 50
+    },
+    "query": "",
+    "queryMode": "builder",
+    "sorting": {
+      "sortBy": {
+        "field": "",
+        "is_attribute": false,
+        "type": "string"
+      },
+      "sortOrder": "ASC"
+    },
+    "source": "auto",
+    "value": "auto",
+    "variables": [],
+    "visible": true,
+    "xaxis": "auto",
+    "yaxis": [
+      "auto"
+    ]
+  },
+  "synthetics_monitor": {
+    "label": "A",
+    "visible": true
+  },
+  "traces": {
+    "aggregation": {
+      "function": "row_count"
+    },
+    "chart_type": "table",
+    "fieldConfig": {},
+    "filterMode": "MFD",
+    "filters": {},
+    "groupBy": [],
+    "label": "A",
+    "labelOptions": {
+      "type": "auto"
+    },
+    "list": [],
+    "pagination": {
+      "page": 1,
+      "page_size": 50
+    },
+    "query": "",
+    "queryMode": "builder",
+    "sorting": {
+      "sortBy": {
+        "field": "",
+        "is_attribute": false,
+        "type": "string"
+      },
+      "sortOrder": "ASC"
+    },
+    "source": "auto",
+    "value": "auto",
+    "variables": [],
+    "visible": true,
+    "xaxis": "auto",
+    "yaxis": [
+      "auto"
+    ]
+  }
+}

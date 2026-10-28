@@ -1,0 +1,57 @@
+// Migration chain for the alert rule document.
+//
+// Go only — deliberately. The npm package ships no migration code, because the
+// API migrates on read: the UI therefore never receives an unmigrated document
+// and needs none. The `files` whitelist in package.json enforces that
+// structurally rather than by convention, since it ships only ./gen.
+package alert
+
+import "github.com/kubesense-ai/terraform-provider-kubesense/internal/kschema/internal/migrate"
+
+// CurrentVersion is the schema_version this build writes and understands. It
+// must equal the version the last step in `steps` produces, or 1 when there are
+// none; migrate.Check enforces that on every call, and TestChainIsWellFormed
+// catches a mismatch at build time.
+const CurrentVersion = 1
+
+// steps is the ordered n -> n+1 chain. Append only; never edit or reorder a step
+// that has shipped (see migrate.Step for why).
+//
+// Adding one means three things, in this order:
+//
+//  1. a new file `migrate_v<n>_v<n+1>.go` holding the transform
+//  2. an entry appended here, and CurrentVersion bumped to match
+//  3. a fixture pair under ./testdata/migrate/v<n>_v<n+1>/ — {input,want}.json
+//
+// The fixture pair is not optional. A migration without one is a transform
+// nobody has ever seen run.
+var steps = []migrate.Step{
+	// Empty, and that is a claim rather than an omission: legacy alert rules are
+	// already v1-shaped, so there is nothing to transform. The first entry will
+	// read:
+	//
+	//	{To: 2, Apply: MigrateV1ToV2, Down: MigrateV2ToV1},
+}
+
+// StepCount is how many migrations the chain runs to reach CurrentVersion from
+// legacy. Zero here, because legacy alert rules need no transform.
+func StepCount() int { return len(steps) }
+
+// Migrate brings an alert rule document up to CurrentVersion, applying each
+// n -> n+1 step the document has not already been through, and returns it
+// re-encoded.
+//
+// Unknown fields survive: the document is carried as a map, so a field this
+// build has never heard of round-trips untouched rather than being dropped.
+// That matters because the caller usually writes the result back.
+func Migrate(document []byte) ([]byte, error) {
+	return migrate.Run(document, steps, CurrentVersion)
+}
+
+// MigrateTo brings an alert rule document to version: up to CurrentVersion first, then back
+// down through each step's Down. It is how the API answers a client — the
+// Terraform provider — that was built against an older version than this one.
+// A version above CurrentVersion is answered at CurrentVersion.
+func MigrateTo(document []byte, version int) ([]byte, error) {
+	return migrate.RunTo(document, steps, CurrentVersion, version)
+}
