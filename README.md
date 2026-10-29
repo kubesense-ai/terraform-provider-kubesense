@@ -84,6 +84,16 @@ The acceptance tests run real plan, apply and import cycles against an
 in-memory fake of the API (`internal/provider/acceptance_test.go`), so they need
 no running kubeapi.
 
+`docs/` holds the pages the Terraform Registry shows. They are generated from
+the schema descriptions and `examples/`, so change those and regenerate rather
+than editing `docs/` by hand:
+
+```sh
+go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs@v0.25.0 generate --provider-name kubesense
+```
+
+kubeapi's CI fails when `docs/` does not match what this produces.
+
 ### Using a local build with Terraform
 
 1. Install the binary:
