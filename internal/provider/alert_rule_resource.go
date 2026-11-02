@@ -99,7 +99,8 @@ func (r *alertRuleResource) Read(ctx context.Context, req resource.ReadRequest, 
 	// sample_limit, a query's visible). Reporting those would show a change on
 	// every plan, so only members the configuration manages are read back;
 	// a change to one of those still shows as drift. An import (no name in
-	// state yet) adopts everything.
+	// state yet) adopts everything but empty strings, which Terraform's
+	// generated configuration and the UI's export both leave unset.
 	prior, err := valueToTree(shape, req.State.Raw)
 	if err != nil {
 		resp.Diagnostics.AddError("Reading state failed", err.Error())
@@ -107,6 +108,8 @@ func (r *alertRuleResource) Read(ctx context.Context, req resource.ReadRequest, 
 	}
 	if _, managed := prior["name"]; managed {
 		server = keepConfigured(shape, prior, server)
+	} else {
+		server = terraform.DropEmptyStrings(shape, server)
 	}
 
 	v, err := treeToValue(resp.State.Schema.Type().TerraformType(ctx), shape, server,

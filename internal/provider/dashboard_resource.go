@@ -156,8 +156,21 @@ func (r *dashboardResource) Read(ctx context.Context, req resource.ReadRequest, 
 		resp.Diagnostics.AddError("Reading the dashboard preset failed", err.Error())
 		return
 	}
+	// A required member the server holds as "" reads back unset where the
+	// configuration leaves it unset (presetFromValue sends it as ""). An
+	// import (no prior panels) adopts "" as the server has it, which is what
+	// Export to Terraform writes.
+	prior, err := valueToTree(shape, req.State.Raw)
+	if err != nil {
+		resp.Diagnostics.AddError("Reading state failed", err.Error())
+		return
+	}
+	server := terraform.ToTerraform(shape, preset)
+	if len(prior) > 0 {
+		server = terraform.DropEmptyRequiredStrings(shape, server, prior)
+	}
 	stateType := resp.State.Schema.Type().TerraformType(ctx)
-	v, err := treeToValue(stateType, shape, terraform.ToTerraform(shape, preset), map[string]tftypes.Value{
+	v, err := treeToValue(stateType, shape, server, map[string]tftypes.Value{
 		"id":          tftypes.NewValue(tftypes.String, d.ID),
 		"name":        tftypes.NewValue(tftypes.String, d.Name),
 		"description": tftypes.NewValue(tftypes.String, d.Description),

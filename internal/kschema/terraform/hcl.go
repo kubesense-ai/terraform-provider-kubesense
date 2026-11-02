@@ -80,7 +80,7 @@ func ExportAlertRule(id string, definition map[string]any) (Export, error) {
 	label := Label(name, "alert")
 	f := hclwrite.NewEmptyFile()
 	block := f.Body().AppendNewBlock("resource", []string{"kubesense_alert_rule", label})
-	if err := writeBody(block.Body(), shape, ToTerraform(shape, definition)); err != nil {
+	if err := writeBody(block.Body(), shape, DropEmptyStrings(shape, ToTerraform(shape, definition))); err != nil {
 		return Export{}, err
 	}
 	address := "kubesense_alert_rule." + label

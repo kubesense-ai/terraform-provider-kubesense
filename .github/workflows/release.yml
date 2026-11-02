@@ -1,4 +1,5 @@
-# Publishes a release on a v* tag. The Terraform Registry picks it up from the
+# Publishes a release on a v* tag, whether pushed by a person or by tag.yml
+# after a sync pull request is merged. The Terraform Registry picks it up from the
 # GitHub release: per-platform zips, SHA256SUMS signed with the GPG key whose
 # public half is registered with the registry, and the manifest.
 #
@@ -9,6 +10,15 @@ name: Release
 on:
   push:
     tags: ["v*"]
+  # tag.yml calls this after tagging a merged sync pull request.
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
 
 permissions:
   contents: write
@@ -20,6 +30,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.TAG }}
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
@@ -29,7 +40,7 @@ jobs:
       # Upgrading from the release before this one must leave plans empty.
       - name: Find the previous release
         run: |
-          prev=$(git tag --list 'v*' --sort=-v:refname | grep -vx "$GITHUB_REF_NAME" | head -1)
+          prev=$(git tag --list 'v*' --sort=-v:refname | grep -vx "$TAG" | head -1)
           echo "KUBESENSE_PREVIOUS_PROVIDER_VERSION=${prev#v}" >> "$GITHUB_ENV"
       - run: go test -p 1 ./...
         env:
@@ -42,6 +53,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.TAG }}
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
@@ -52,7 +64,8 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
       - uses: goreleaser/goreleaser-action@v6
         with:
-          args: release --clean
+          args: release --clean ${{ hashFiles('.release/notes.md') != '' && '--release-notes .release/notes.md' || '' }}
         env:
+          GORELEASER_CURRENT_TAG: ${{ env.TAG }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}

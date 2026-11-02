@@ -74,6 +74,80 @@ func ToTerraform(n *Node, obj map[string]any) map[string]any {
 	return out
 }
 
+// DropEmptyStrings removes string attributes whose value is "" from a block's
+// Terraform value, nested blocks included. Terraform writes an unset optional
+// string as null (terraform plan -generate-config-out does), so an import or
+// an export that kept "" would plan a change to every such member. Use it only
+// where "" and absent mean the same to the server, as they do for an alert
+// rule's definition, which the server decodes into structs.
+func DropEmptyStrings(n *Node, tf map[string]any) map[string]any {
+	for _, f := range n.Fields {
+		v, ok := tf[f.Name]
+		if !ok {
+			continue
+		}
+		switch f.Kind {
+		case KindString:
+			if s, _ := v.(string); s == "" {
+				delete(tf, f.Name)
+			}
+		case KindBlock:
+			if m, ok := v.(map[string]any); ok {
+				DropEmptyStrings(f, m)
+			}
+		case KindBlocks:
+			list, _ := v.([]any)
+			for _, e := range list {
+				if m, ok := e.(map[string]any); ok {
+					DropEmptyStrings(f, m)
+				}
+			}
+		}
+	}
+	return tf
+}
+
+// DropEmptyRequiredStrings removes required string members whose value is ""
+// from a block's Terraform value where prior (the same block's previous
+// value) has them unset. FromTerraform sends an unset required string as "",
+// so a configuration that leaves one unset reads back unset, not as a change
+// to "". Optional members are left alone: in a preset, "" and absent can
+// differ.
+func DropEmptyRequiredStrings(n *Node, tf, prior map[string]any) map[string]any {
+	for _, f := range n.Fields {
+		v, ok := tf[f.Name]
+		if !ok {
+			continue
+		}
+		pv := prior[f.Name]
+		switch f.Kind {
+		case KindString:
+			if s, _ := v.(string); s == "" && f.Required && pv == nil {
+				delete(tf, f.Name)
+			}
+		case KindBlock:
+			m, _ := v.(map[string]any)
+			pm, _ := pv.(map[string]any)
+			if m != nil && pm != nil {
+				DropEmptyRequiredStrings(f, m, pm)
+			}
+		case KindBlocks:
+			list, _ := v.([]any)
+			plist, _ := pv.([]any)
+			// Entries beyond the prior ones are new; they keep what the
+			// server says.
+			for i := 0; i < len(list) && i < len(plist); i++ {
+				m, _ := list[i].(map[string]any)
+				pm, _ := plist[i].(map[string]any)
+				if m != nil && pm != nil {
+					DropEmptyRequiredStrings(f, m, pm)
+				}
+			}
+		}
+	}
+	return tf
+}
+
 func toTerraformValue(f *Node, v any) (any, bool) {
 	switch f.Kind {
 	case KindString, KindNumber, KindBool:
@@ -150,8 +224,14 @@ func FromTerraform(n *Node, tf map[string]any) (map[string]any, error) {
 	for _, f := range n.Fields {
 		v, ok := tf[f.Name]
 		if !ok || v == nil {
-			if f.Kind == KindBlocks && f.Required {
+			switch {
+			case f.Kind == KindBlocks && f.Required:
 				out[f.JSONName] = []any{}
+			case f.Kind == KindString && f.Required:
+				// Terraform writes an empty string as null; the schema
+				// requires the member, so it was "" (see
+				// DropEmptyRequiredStrings).
+				out[f.JSONName] = ""
 			}
 			continue
 		}
