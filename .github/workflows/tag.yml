@@ -1,0 +1,58 @@
+# Releases what a merged sync pull request names. kubeapi's sync workflow
+# writes the next version into .release/version (see
+# scripts/next-version.sh upstream); when main gains a version that has no
+# tag yet, this tags it and runs the release.
+#
+# The release runs here, as a called workflow, rather than from the tag: a
+# tag pushed with GITHUB_TOKEN does not start other workflows. A tag pushed
+# by a person still starts release.yml on its own.
+name: Tag
+
+on:
+  push:
+    branches: [main]
+    paths: [".release/version"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: tag
+        run: |
+          version=$(tr -d '[:space:]' < .release/version)
+          if ! [[ "$version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::.release/version is '$version', not vMAJOR.MINOR.PATCH"
+            exit 1
+          fi
+          if git rev-parse -q --verify "refs/tags/$version" >/dev/null; then
+            echo "$version is already tagged; nothing to release."
+            exit 0
+          fi
+          latest=$(git tag --list 'v[0-9]*' --sort=-v:refname | head -1)
+          if [ -n "$latest" ] && [ "$(printf '%s\n%s\n' "$latest" "$version" | sort -V | tail -1)" != "$version" ]; then
+            echo "::error::$version is not newer than $latest"
+            exit 1
+          fi
+          git tag "$version"
+          git push origin "$version"
+          echo "tag=$version" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: tag
+    if: needs.tag.outputs.tag != ''
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.tag.outputs.tag }}
+    secrets: inherit

@@ -119,3 +119,38 @@ func TestTypedDashboardExportLooksLikeTerraform(t *testing.T) {
 		}
 	}
 }
+
+// A variable's description is required by the contract and is often "".
+// Terraform writes "" as null in configuration it generates (plan
+// -generate-config-out), and a person may leave it out: either must be sent
+// as "", not dropped (the contract refuses a variable without one), and must
+// not then show as a change from "" on every plan.
+func TestAccTypedDashboardUnsetRequiredString(t *testing.T) {
+	api := newFakeAPI(t)
+	preset := strings.Replace(typedPreset, `"description": "Cluster to show"`, `"description": ""`, 1)
+	export, err := terraform.ExportDashboard(terraform.Dashboard{Name: "Checkout", Preset: []byte(preset)})
+	if err != nil {
+		t.Fatal(err)
+	}
+	unset := regexp.MustCompile(`(?m)^\s*description\s*=\s*""\n`)
+	if !unset.MatchString(export.HCL) {
+		t.Fatalf("export has no empty description to leave out:\n%s", export.HCL)
+	}
+	provider := fmt.Sprintf("provider \"kubesense\" {\n  api_url = %q\n  api_key = \"test-key\"\n}\n\n", api.URL)
+
+	resource.Test(t, resource.TestCase{
+		ProtoV6ProviderFactories: testProviders,
+		Steps: []resource.TestStep{
+			{Config: provider + unset.ReplaceAllString(export.HCL, "")},
+			{Config: provider + unset.ReplaceAllString(export.HCL, ""), PlanOnly: true},
+		},
+	})
+	// The export itself says "", and keeps saying it.
+	resource.Test(t, resource.TestCase{
+		ProtoV6ProviderFactories: testProviders,
+		Steps: []resource.TestStep{
+			{Config: provider + export.HCL},
+			{Config: provider + export.HCL, PlanOnly: true},
+		},
+	})
+}

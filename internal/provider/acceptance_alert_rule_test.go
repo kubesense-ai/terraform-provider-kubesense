@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
+	"github.com/hashicorp/terraform-plugin-testing/plancheck"
 	tfstate "github.com/hashicorp/terraform-plugin-testing/terraform"
 	"github.com/kubesense-ai/terraform-provider-kubesense/internal/kschema/terraform"
 )
@@ -168,6 +169,68 @@ func TestAccAlertRuleExportAdoptsTheOriginal(t *testing.T) {
 			{
 				Config: config(95),
 				Check:  onlyTheOriginal("95"),
+			},
+		},
+	})
+}
+
+// The server answers members a rule does not use with "" (compared_to,
+// dashboard_id, an empty filter's fields). Terraform writes an unset string
+// as null, both in configuration it generates (plan -generate-config-out) and
+// in what a person writes, so an import that adopted the "" planned an update
+// to every such member on a rule nobody had touched.
+func TestAccAlertRuleImportLeavesEmptyStringsUnset(t *testing.T) {
+	api := newFakeAPI(t)
+	api.alertRules["orig"] = fakeAlertDefaults(map[string]any{
+		"name": "disk full", "severity": "critical", "metric_query_label": "A",
+		"threshold_operator": "greater_than", "threshold_value": 90,
+		"time_window": "5m", "evaluation_interval": "1m",
+		"compared_to": "", "dashboard_id": "", "panel_id": "", "threshold_input_unit": "",
+		"query_config": []any{map[string]any{
+			"label": "A", "queryMode": "code", "selectedMode": "metrics", "promql": "disk_used_percent",
+			"unified_filter": map[string]any{"type": "", "adv_filters": map[string]any{"field": "", "operation": "", "type": ""}},
+		}},
+	})
+	config := fmt.Sprintf(alertProvider+`
+import {
+  to = kubesense_alert_rule.disk
+  id = "orig"
+}
+
+resource "kubesense_alert_rule" "disk" {
+  name                = "disk full"
+  enabled             = true
+  sample_limit        = 5
+  severity            = "critical"
+  metric_query_label  = "A"
+  threshold_operator  = "greater_than"
+  threshold_value     = 90
+  time_window         = "5m"
+  evaluation_interval = "1m"
+
+  query_config {
+    label         = "A"
+    query_mode    = "code"
+    selected_mode = "metrics"
+    promql        = "disk_used_percent"
+    visible       = false
+    unified_filter {
+      adv_filters {}
+    }
+  }
+}
+`, api.URL)
+
+	resource.Test(t, resource.TestCase{
+		ProtoV6ProviderFactories: testProviders,
+		Steps: []resource.TestStep{
+			{
+				Config: config,
+				ConfigPlanChecks: resource.ConfigPlanChecks{
+					PreApply: []plancheck.PlanCheck{
+						plancheck.ExpectResourceAction("kubesense_alert_rule.disk", plancheck.ResourceActionNoop),
+					},
+				},
 			},
 		},
 	})

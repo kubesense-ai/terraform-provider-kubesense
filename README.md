@@ -122,6 +122,34 @@ kubeapi's CI fails when `docs/` does not match what this produces.
 Run the provider under a debugger with `-debug`. It prints a `TF_REATTACH_PROVIDERS`
 value to export in the shell where you run terraform.
 
+## Releasing
+
+Releases are cut by CI. Nobody picks a version or pushes a tag:
+
+1. A change reaches kubeapi's `main`, which is released server code, not
+   `dev`. The sync workflow exports this directory to
+   github.com/kubesense-ai/terraform-provider-kubesense and opens or updates a
+   pull request there.
+2. `scripts/next-version.sh` sets the version from the conventional-commit
+   subjects of what changed here or in `schema/` since the last release:
+
+   | Commits | Release |
+   |---|---|
+   | `feat!:`, `fix!:` …, or `BREAKING CHANGE` in the body | minor while 0.x, then major |
+   | `feat:` | minor |
+   | `fix:`, `perf:`, `refactor:`, `docs:`, a revert | patch |
+   | only `chore:`, `ci:`, `test:`, `build:` | none |
+
+   The pull request's title says what merging it does: "Release v0.2.0" or
+   "Sync from kubeapi (no release)". Its body lists the commits.
+3. Merging that pull request is the release. The public repository's tag
+   workflow tags the version and runs the signed release, and the registries
+   pick it up. To release a different version, edit `.release/version` on the
+   pull request's branch before merging.
+
+So write commit subjects with care: `feat:` on a provider change ships a minor
+release.
+
 ## Behaviour worth knowing
 
 - **Typed dashboards share their conversion with kubeapi.** The schema and both

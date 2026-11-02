@@ -9,3 +9,6 @@
 # ignores every "docs"; these must be tracked, because the registry reads them
 # from the public repository's releases.
 !docs/
+
+# Python bytecode from scripts/live-test.
+__pycache__/
