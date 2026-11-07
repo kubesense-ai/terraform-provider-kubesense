@@ -1292,6 +1292,20 @@
       ],
       "type": "object"
     },
+    "AuditQuery": {
+      "$ref": "#/$defs/LogsTracesQueryBase",
+      "additionalProperties": true,
+      "description": "The audit log, kube_logs.audit_log, one row per audited action. Same query\nmodel as logs, served by /explore/query and /explore/query-range like\nsynthetics. Fields are the audit catalog; the table has no attribute maps,\nso the API refuses `@key` fields. No narrowing beyond the base, for the\nreason #EventsQuery gives.",
+      "properties": {
+        "selectedMode": {
+          "const": "audit"
+        }
+      },
+      "required": [
+        "selectedMode"
+      ],
+      "type": "object"
+    },
     "AutoLabel": {
       "const": {
         "type": "auto"
@@ -10188,7 +10202,8 @@
             "traces",
             "events",
             "rum",
-            "synthetics"
+            "synthetics",
+            "audit"
           ]
         },
         "sorting": {
@@ -10796,6 +10811,9 @@
         },
         {
           "$ref": "#/$defs/SyntheticsQuery"
+        },
+        {
+          "$ref": "#/$defs/AuditQuery"
         },
         {
           "$ref": "#/$defs/FormulaQuery"

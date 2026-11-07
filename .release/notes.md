@@ -1,3 +1,3 @@
-## Changes since v0.1.0
+## Changes since v0.2.0
 
-- feat(terraform): export the provider to its public repository (#1442) (kubeapi@22bda6ed)
+- feat(audit): audit data downloads; audit logs in explore, dashboards and variables; SPL export (kubeapi@dbd5300f)

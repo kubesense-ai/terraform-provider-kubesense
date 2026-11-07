@@ -1292,6 +1292,77 @@
       ],
       "type": "object"
     },
+    "AuditQuery": {
+      "$ref": "#/$defs/LogsTracesQueryBase",
+      "additionalProperties": true,
+      "description": "The audit log, kube_logs.audit_log, one row per audited action. Same query\nmodel as logs, served by /explore/query and /explore/query-range like\nsynthetics. Fields are the audit catalog; the table has no attribute maps,\nso the API refuses `@key` fields. No narrowing beyond the base, for the\nreason #EventsQuery gives.",
+      "properties": {
+        "selectedMode": {
+          "const": "audit"
+        }
+      },
+      "required": [
+        "selectedMode"
+      ],
+      "type": "object"
+    },
+    "AuditVariable": {
+      "additionalProperties": true,
+      "description": "Distinct values of an audit log field (user_email, action, resource_type,\n...), drawn from /audit-results/filter/search and scoped by the variable's\nown audit filter. Applying it is an ordinary field filter on an audit query.\nThe audit log has no attributes, so fieldMeta names a catalog column.",
+      "properties": {
+        "fieldMeta": {
+          "$ref": "#/$defs/VariableField"
+        },
+        "filterMode": {
+          "default": "MFD",
+          "enum": [
+            "MFD",
+            "ADVANCED_QUERY"
+          ]
+        },
+        "filters": {
+          "anyOf": [
+            {
+              "const": {}
+            },
+            {
+              "$ref": "#/$defs/VariableFilters"
+            }
+          ],
+          "default": {}
+        },
+        "selectType": {
+          "anyOf": [
+            {
+              "const": "multiple"
+            },
+            {
+              "$ref": "#/$defs/SelectType"
+            }
+          ],
+          "default": "multiple"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "const": []
+            },
+            {
+              "$ref": "#/$defs/StringValues"
+            }
+          ],
+          "default": []
+        },
+        "variableType": {
+          "const": "audit"
+        }
+      },
+      "required": [
+        "fieldMeta",
+        "variableType"
+      ],
+      "type": "object"
+    },
     "AutoLabel": {
       "const": {
         "type": "auto"
@@ -10282,7 +10353,8 @@
             "traces",
             "events",
             "rum",
-            "synthetics"
+            "synthetics",
+            "audit"
           ]
         },
         "sorting": {
@@ -11097,6 +11169,9 @@
         },
         {
           "$ref": "#/$defs/SyntheticsQuery"
+        },
+        {
+          "$ref": "#/$defs/AuditQuery"
         },
         {
           "$ref": "#/$defs/FormulaQuery"
@@ -13253,6 +13328,9 @@
         },
         {
           "$ref": "#/$defs/RumVariable"
+        },
+        {
+          "$ref": "#/$defs/AuditVariable"
         }
       ]
     },

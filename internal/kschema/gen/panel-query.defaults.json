@@ -11,6 +11,43 @@
     "vizType": "timeseries",
     "widgetType": "graph"
   },
+  "audit": {
+    "aggregation": {
+      "function": "row_count"
+    },
+    "chart_type": "table",
+    "fieldConfig": {},
+    "filterMode": "MFD",
+    "filters": {},
+    "groupBy": [],
+    "label": "A",
+    "labelOptions": {
+      "type": "auto"
+    },
+    "list": [],
+    "pagination": {
+      "page": 1,
+      "page_size": 50
+    },
+    "query": "",
+    "queryMode": "builder",
+    "sorting": {
+      "sortBy": {
+        "field": "",
+        "is_attribute": false,
+        "type": "string"
+      },
+      "sortOrder": "ASC"
+    },
+    "source": "auto",
+    "value": "auto",
+    "variables": [],
+    "visible": true,
+    "xaxis": "auto",
+    "yaxis": [
+      "auto"
+    ]
+  },
   "events": {
     "aggregation": {
       "function": "row_count"
