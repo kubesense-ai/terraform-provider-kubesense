@@ -368,7 +368,7 @@ import "list"
 // the discriminator is declared here across every arm and narrowed to a literal
 // below, which reaches the same place.
 #LogsTracesQueryBase: {
-	selectedMode!: "logs" | "traces" | "events" | "rum" | "synthetics"
+	selectedMode!: "logs" | "traces" | "events" | "rum" | "synthetics" | "audit"
 	labelOptions:  #LabelOptions
 	fieldConfig:  *{} | #FieldConfig
 	label:        *"A" | string
@@ -450,6 +450,13 @@ import "list"
 // arm is the base extended with this literal, and narrowing here alone would
 // put this contract and the editor's schema in disagreement.
 #SyntheticsQuery: #LogsTracesQueryBase & {selectedMode!: "synthetics", ...}
+
+// The audit log, kube_logs.audit_log, one row per audited action. Same query
+// model as logs, served by /explore/query and /explore/query-range like
+// synthetics. Fields are the audit catalog; the table has no attribute maps,
+// so the API refuses `@key` fields. No narrowing beyond the base, for the
+// reason #EventsQuery gives.
+#AuditQuery: #LogsTracesQueryBase & {selectedMode!: "audit", ...}
 
 // formula arm :709. The zod also carries a .refine() restricting the expression
 // to query labels, digits, the four operators and parentheses; replicated here
@@ -877,7 +884,7 @@ import "list"
 // #Query is the discriminated union. Discriminating on selectedMode is what
 // makes the generated TypeScript a union that narrows, rather than an
 // intersection of open structs.
-#Query: #MetricsQuery | #LogsQuery | #TracesQuery | #EventsQuery | #RumQuery | #SyntheticsQuery | #FormulaQuery | #SloQuery | #AlertQuery | #InfrastructureQuery | #SyntheticsMonitorQuery
+#Query: #MetricsQuery | #LogsQuery | #TracesQuery | #EventsQuery | #RumQuery | #SyntheticsQuery | #AuditQuery | #FormulaQuery | #SloQuery | #AlertQuery | #InfrastructureQuery | #SyntheticsMonitorQuery
 
 // ── the EMPTY-CONTAINER DEFAULT rule ────────────────────────────────────────
 //

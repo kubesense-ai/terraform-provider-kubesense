@@ -103,7 +103,7 @@ import (
 // DASHBOARD_VARIABLE_TYPES :8 — note the STATIC type's wire value is "custom",
 // not "static". The constant is named STATIC; the persisted discriminator says
 // custom.
-#VariableType: "textbox" | "custom" | "traces" | "metrics" | "logs" | "rum"
+#VariableType: "textbox" | "custom" | "traces" | "metrics" | "logs" | "rum" | "audit"
 
 // DASHBOARD_VARIABLE_SELECT_TYPE :16
 #SelectType: "multiple" | "single"
@@ -139,7 +139,7 @@ import (
 }
 
 #VariableMeta: #TextboxVariable | #CustomVariable | #TracesVariable |
-	#LogsVariable | #MetricsVariable | #RumVariable
+	#LogsVariable | #MetricsVariable | #RumVariable | #AuditVariable
 
 // A free-text value the viewer types.
 #TextboxVariable: {
@@ -210,6 +210,21 @@ import (
 #RumVariable: {
 	variableType!: "rum"
 	rumEventType!: panel.#RumEventType
+	fieldMeta!:    #VariableField
+	value:         *[] | #StringValues
+	selectType:    *"multiple" | #SelectType
+	filters:       *{} | #VariableFilters
+	filterMode:    *"MFD" | "MFD" | "ADVANCED_QUERY"
+
+	...
+}
+
+// Distinct values of an audit log field (user_email, action, resource_type,
+// ...), drawn from /audit-results/filter/search and scoped by the variable's
+// own audit filter. Applying it is an ordinary field filter on an audit query.
+// The audit log has no attributes, so fieldMeta names a catalog column.
+#AuditVariable: {
+	variableType!: "audit"
 	fieldMeta!:    #VariableField
 	value:         *[] | #StringValues
 	selectType:    *"multiple" | #SelectType
